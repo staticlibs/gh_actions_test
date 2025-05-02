@@ -7,7 +7,7 @@ on:
 
 jobs:
 
-  prepare-status:
+  test1:
     runs-on: ubuntu-latest
     steps:
       - id: test1
@@ -16,5 +16,10 @@ jobs:
           LONG_BRANCH_NAME=${{ inputs.git_ref }}
           echo "LONG_BRANCH_NAME: ${LONG_BRANCH_NAME}"
           SHORT_BRANCH=${LONG_BRANCH_NAME#refs/heads/}
-          echo "SHORT_BRANCH: ${SHORT_BRANCH}"
+          echo "short_branch_name=$SHORT_BRANCH" >> $GITHUB_ENV
+
+      - id: test2
+        shell: bash
+        run: |
+          echo "${{ steps.test1.outputs.short_branch_name }}"
     
