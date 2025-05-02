@@ -16,8 +16,7 @@ jobs:
         run: |
           LONG_BRANCH_NAME=${{ inputs.git_ref }}
           echo "LONG_BRANCH_NAME: ${LONG_BRANCH_NAME}"
-          SHORT_BRANCH="${LONG_BRANCH_NAME#refs/heads/}"
-          echo "short_branch_name=${SHORT_BRANCH}" >> "${GITHUB_OUTPUT}"
+          echo "short_branch_name=${LONG_BRANCH_NAME#refs/heads/}" >> "${GITHUB_OUTPUT}"
 
       - id: test2
         name: test 2 step
