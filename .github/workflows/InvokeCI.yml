@@ -13,7 +13,8 @@ jobs:
       - id: test1
         shell: bash
         run: |
-          echo "inputs.git_ref: ${{ inputs.git_ref }}"
-          SHORT_BRANCH=${${{ inputs.git_ref }}#refs/heads/}
+          LONG_BRANCH_NAME=${{ inputs.git_ref }}
+          echo "LONG_BRANCH_NAME: ${LONG_BRANCH_NAME}"
+          SHORT_BRANCH=${LONG_BRANCH_NAME#refs/heads/}
           echo "SHORT_BRANCH: ${SHORT_BRANCH}"
     
