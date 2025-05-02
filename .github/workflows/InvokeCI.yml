@@ -1,0 +1,19 @@
+name: test1
+on:
+  workflow_dispatch:
+    inputs:
+      git_ref:
+        type: string
+
+jobs:
+
+  prepare-status:
+    runs-on: ubuntu-latest
+    steps:
+      - id: test1
+        shell: bash
+        run: |
+          echo "inputs.git_ref: ${{ inputs.git_ref }}"
+          SHORT_BRANCH=${${{ inputs.git_ref }}#refs/heads/}
+          echo "SHORT_BRANCH: ${SHORT_BRANCH}"
+    
